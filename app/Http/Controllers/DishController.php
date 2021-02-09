@@ -16,7 +16,7 @@ class DishController extends Controller
     public function index()
     {
         $allDishes = Dish::all();
-        return $allDishes;
+        return response()->json($allDishes, 202);
     }
 
     /**
@@ -26,7 +26,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +37,15 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dish = Dish::create([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'image'=>$request->image,  
+        ]);
+
+        return response()->json($dish, 201);
+
     }
 
     /**
@@ -48,7 +56,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        return $dish;
+        return response()->json($dish, 202);
     }
 
     /**
@@ -59,7 +67,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return response()->json($dish, 202);
     }
 
     /**
@@ -71,7 +79,8 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        //
+        $dish->update($request->all());
+        return response()->json($dish, 200);
     }
 
     /**
@@ -82,6 +91,9 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish_id = $dish->id;
+        Dish::destroy($dish_id);
+        $mesage = 'This Dish has benn destroyed and erased and anihilated. Thank you.';
+        return response($mesage, 202);
     }
 }
