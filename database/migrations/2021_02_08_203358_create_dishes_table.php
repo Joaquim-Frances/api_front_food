@@ -17,7 +17,7 @@ class CreateDishesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->int('price');
+            $table->integer('price');
             $table->string('image');
             $table->timestamps();
         });

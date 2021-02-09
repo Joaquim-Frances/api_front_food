@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dish;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DishController extends Controller
 {
@@ -14,7 +15,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $allDishes = Dish::all();
+        return $allDishes;
     }
 
     /**
@@ -46,7 +48,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        return $dish;
     }
 
     /**
