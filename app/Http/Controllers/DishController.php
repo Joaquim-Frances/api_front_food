@@ -67,7 +67,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return response()->json($dish, 202);
+        return response()->json($dish, 200);
     }
 
     /**
